@@ -22,7 +22,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!tokenStore.get()) return;
-    api<{ admin: AdminUser }>('https://backendzorvenn.onrender.com/api/auth/me')
+    api<{ admin: AdminUser }>('http://localhost:5000/api/auth/me')
       .then((res) => setAdmin(res.admin))
       .catch(() => tokenStore.set(null))
       .finally(() => setLoading(false));
@@ -34,7 +34,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [logout]);
 
   const login = useCallback(async (email: string, password: string) => {
-    const res = await api<{ token: string; admin: AdminUser }>('https://backendzorvenn.onrender.com/api/auth/login', {
+    const res = await api<{ token: string; admin: AdminUser }>('http://localhost:5000/api/auth/login', {
       method: 'POST',
       body: { email, password },
     });

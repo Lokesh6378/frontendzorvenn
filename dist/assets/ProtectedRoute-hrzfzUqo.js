@@ -1,0 +1,1 @@
+import{n as a,w as i,j as t,N as o,O as r}from"./index-TJuRnTVJ.js";function c(){const{admin:e,loading:n}=a(),s=i();return n?t.jsx("div",{className:"flex min-h-screen items-center justify-center text-muted",children:"Loading…"}):e?t.jsx(r,{}):t.jsx(o,{to:"/admin/login",replace:!0,state:{from:s.pathname}})}export{c as ProtectedRoute};

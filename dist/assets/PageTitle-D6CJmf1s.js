@@ -1,0 +1,1 @@
+import{u as a,j as s}from"./index-TJuRnTVJ.js";function n({title:e,children:t}){return a(`${e} · Admin`),s.jsxs("div",{className:"mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end",children:[s.jsx("h1",{className:"font-display text-4xl font-bold tracking-tight",children:e}),t]})}export{n as P};
