@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- Theme tokens (light by default, .dark overrides) ---- */
+:root {
+  --bg: #fafafa;
+  --fg: #0a0a0a;
+  --muted: #52525b;
+  --card: #ffffff;
+  --line: #e4e4e7;
+  --grid: rgba(0, 0, 0, 0.045);
+  --accent: #6d5dfc;          /* change once the logo is final */
+  --accent-fg: #6254e3;       /* accent used as text: darker in light mode */
+  --accent-soft: rgba(109, 93, 252, 0.07);
+  --glow: rgba(109, 93, 252, 0.15);
+  color-scheme: light;
+}
+.dark {
+  --bg: #050505;
+  --fg: #ffffff;
+  --muted: #a1a1aa;
+  --card: #111111;
+  --line: #262626;
+  --grid: rgba(255, 255, 255, 0.035);
+  --accent-fg: #a096fd;       /* accent used as text: lighter in dark mode for contrast */
+  --accent-soft: rgba(109, 93, 252, 0.1);
+  --glow: rgba(109, 93, 252, 0.25);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-display: "Bricolage Grotesque", Georgia, serif;
+  --font-sans: "Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  ::selection { background: var(--accent); color: #fff; }
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+@utility glow {
+  background: radial-gradient(closest-side, var(--glow), transparent);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
