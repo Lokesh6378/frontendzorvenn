@@ -1,14 +1,10 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: { '@': new URL('./src', import.meta.url).pathname },
+  plugins: [react()],
+
+  preview: {
+    allowedHosts: ['frontendzorvenn-2.onrender.com'],
   },
-  server: {
-    port: 5173,
-    proxy: { '/api': 'https://backendzorvenn.onrender.com' },
-  },
-});
+})
