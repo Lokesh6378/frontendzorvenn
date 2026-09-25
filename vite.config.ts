@@ -19,6 +19,10 @@ export default defineConfig({
   },
 
   preview: {
-    allowedHosts: ['frontendzorvenn-2.onrender.com'],
+    allowedHosts: [
+      'frontendzorvenn-2.onrender.com',
+      'zorvenn.com',
+      'www.zorvenn.com',
+    ],
   },
 });
